@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+<main class=" grid place-items-center h-[100dvh] gap-0">
+    <div class=" ">
+        <h1 class=" text-6xl font-bold">Stock Manager</h1>
+        <form method="post" action="{{ path('app_login')}}" class="flex flex-col flex-nowrap gap-2 glass px-8 py-4 shadow-lg rounded-md mt-4">
+        
+            <h3><label for="username" class=" font-semibold">Email</label></h3>
+            <input id="username" type="text" name="_username" class=" input rounded-md border-secondary">
+        
+            <h3><label for="password" class=" font-semibold">Password</label></h3>
+            <input id="password" type="password" name="_password" class=" input rounded-md border-secondary">
+        
+            <input type="submit" value="Login" class=" btn btn-primary rounded-md font-semibold">
+        
+            {% if error %}
+                <div>{{  error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </form>
+        
+        <p class=" text-right"><a href="/register" class=" font-semibold">Pas de compte ?</a></p>
+    </div>
+</main>
+
+{% endblock %}
